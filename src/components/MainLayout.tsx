@@ -15,7 +15,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
     try {
       if (typeof window !== "undefined" && pathname && pathname !== "/") {
         // Replace the visible URL to root without changing history navigation
+        const from = window.location.pathname;
         window.history.replaceState({}, "", "/");
+        console.debug("MainLayout: replaced URL", { from, to: window.location.pathname, pathname });
       }
     } catch (e) {
       // silent
