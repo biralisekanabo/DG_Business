@@ -1,0 +1,34 @@
+
+> dg-business@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 17.2s
+  Running TypeScript ...
+Failed to type check.
+
+./src/app/ventes/page.tsx:529:17
+Type error: Type '{ hidden: { scale: number; opacity: number; y: number; }; visible: { scale: number; opacity: number; y: number; transition: { type: string; damping: number; stiffness: number; }; }; exit: { scale: number; opacity: number; y: number; transition: { ...; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ scale: number; opacity: number; y: number; transition: { type: string; damping: number; stiffness: number; }; }' is not assignable to type 'Variant'.
+      Type '{ scale: number; opacity: number; y: number; transition: { type: string; damping: number; stiffness: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ scale: number; opacity: number; y: number; transition: { type: string; damping: number; stiffness: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; damping: number; stiffness: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; damping: number; stiffness: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; damping: number; stiffness: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+
+  527 |               />
+  528 |               <motion.div
+> 529 |                 variants={modalVariants}
+      |                 ^
+  530 |                 initial="hidden"
+  531 |                 animate="visible"
+  532 |                 exit="exit"
+Next.js build worker exited with code: 1 and signal: null

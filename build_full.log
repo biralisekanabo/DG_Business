@@ -1,0 +1,23 @@
+
+> dg-business@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 23.1s
+  Running TypeScript ...
+Failed to type check.
+
+./src/lib/db.ts:1:22
+Type error: Could not find a declaration file for module 'pg'. 'D:/WEB/dg-business/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/pg` if it exists or add a new declaration (.d.ts) file containing `declare module 'pg';`
+
+> 1 | import { Pool } from 'pg';
+    |                      ^
+  2 |
+  3 | const pool = new Pool({
+  4 |   connectionString: process.env.DATABASE_URL,
+Next.js build worker exited with code: 1 and signal: null

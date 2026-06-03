@@ -1,0 +1,255 @@
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+main {
+  overflow-x: hidden !important;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ========== HIDE SCROLLBAR - GLOBAL ========== */
+
+
+/* Affiche la scrollbar sur toutes les pages sauf home, login, signup */
+html, body {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 #fff;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 10px;
+  background: #fff;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 8px;
+}
+
+/* Pages sans scrollbar : home, login, signup */
+body.home-page,
+body.login-page,
+body.signup-page {
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+}
+body.home-page::-webkit-scrollbar,
+body.login-page::-webkit-scrollbar,
+body.signup-page::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Main and scrollable containers */
+main, 
+[class*="overflow-auto"],
+[class*="overflow-y-auto"],
+[class*="overflow-x-auto"] {
+  scroll-behavior: smooth;
+}
+
+/* Ensure scrollbars show on these specific elements */
+main::-webkit-scrollbar {
+  width: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+}
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========== RESPONSIVE MODAL CENTERING ========== */
+/* Ensure modals are always centered on screen */
+.fixed.z-50 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile-first modal styles */
+.modal-content {
+  width: 95vw;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 640px) {
+  .modal-content {
+    width: 92vw;
+    max-width: 92vw;
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    width: auto;
+    max-width: 448px;
+  }
+}
+
+/* Improve form inputs on mobile */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+@media (min-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 14px !important;
+  }
+}
+
+/* Safe area bottom padding for mobile */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 767px) {
+  button,
+  a[class*="btn"],
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Improve readability on mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Custom scrollbar pour le chat */
+.chat-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.6) rgba(229, 231, 235, 0.3);
+}
+
+.chat-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: rgba(229, 231, 235, 0.3);
+  border-radius: 10px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.6);
+  border-radius: 10px;
+  border: 2px solid rgba(229, 231, 235, 0.3);
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+/* Dark mode scrollbar */
+.dark .chat-scrollbar {
+  scrollbar-color: rgba(99, 102, 241, 0.7) rgba(39, 40, 44, 0.5);
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-track {
+  background: rgba(39, 40, 44, 0.5);
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.7);
+  border-color: rgba(39, 40, 44, 0.5);
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.9);
+}
