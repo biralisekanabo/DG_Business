@@ -39,6 +39,17 @@ main {
   animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
 }
 
+/* Subtle bobbing animation used for icons on login/signup */
+@keyframes bob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.animate-bob {
+  animation: bob 2.4s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* ========== HIDE SCROLLBAR - GLOBAL ========== */
 
 

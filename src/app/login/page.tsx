@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import { LuBuilding } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 
 function showToast(message: string, type: 'success' | 'error' = 'success') {
@@ -124,18 +124,20 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-900 p-4">
       <div className="w-full max-w-md bg-white dark:bg-zinc-800 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-700 p-8 flex flex-col gap-6 items-center animate-fade-in">
         
-        <div className="w-24 h-24 rounded-full bg-linear-to-br from-blue-500 via-blue-300 to-blue-600 p-1 shadow-md hover:scale-105 transition-transform duration-300">
-          <div className="w-full h-full rounded-full bg-white dark:bg-zinc-900 overflow-hidden relative flex items-center justify-center">
-            <Image 
-              src="/logo.png" 
-              alt="Logo entreprise" 
-              width={80} 
-              height={80} 
-              style={{objectFit: 'contain'}}
-              priority
-            />
-          </div>
+        <div className="w-24 h-24 flex items-center justify-center">
+          <LuBuilding className="w-20 h-20 text-indigo-600 animate-bob" aria-hidden="true" />
         </div>
+        <style jsx>{`
+          .animate-bob {
+            animation: bob 2.4s ease-in-out infinite;
+            will-change: transform;
+          }
+          @keyframes bob {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+          }
+        `}</style>
 
         <div className="text-center animate-fade-in-down">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Bienvenue</h1>
