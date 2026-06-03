@@ -2,6 +2,7 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,17 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   const pathname = usePathname();
+
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined" && pathname && pathname !== "/") {
+        // Replace the visible URL to root without changing history navigation
+        window.history.replaceState({}, "", "/");
+      }
+    } catch (e) {
+      // silent
+    }
+  }, [pathname]);
 
   // Don't apply sidebar layout on auth pages
   const excludedPaths = ["/login", "/signup"];
